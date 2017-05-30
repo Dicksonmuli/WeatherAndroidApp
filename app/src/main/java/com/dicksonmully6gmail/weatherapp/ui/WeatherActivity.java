@@ -7,14 +7,16 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.dicksonmully6gmail.weatherapp.R;
+import com.dicksonmully6gmail.weatherapp.services.WeatherService;
 
 import java.io.IOException;
 
-import javax.security.auth.callback.Callback;
+
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 /**
@@ -49,7 +51,7 @@ public class WeatherActivity extends AppCompatActivity{
             public void onResponse(Call call, Response response) throws IOException {
                try {
                    String jsonData = response.body().string();
-                   Log.v(Tag, jsonData);
+                   Log.v(TAG, jsonData);
                }catch (IOException e) {
                    e.printStackTrace();
                }

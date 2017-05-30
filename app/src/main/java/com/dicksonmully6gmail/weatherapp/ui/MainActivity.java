@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.dicksonmully6gmail.weatherapp.R;
+
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -14,7 +16,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Bind(R.id.searchWeatherButton) Button mSearchWeatherButton;
-    @Bind(R.id.locationEditText) Button mLocationEdidText;
+    @Bind(R.id.locationEditText) TextView mLocationEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mSearchWeatherButton) {
-            String locaction = mLocationEdidText.getText().toString();
+            String location = mLocationEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-            Intent.putExtra("location", location);
+            intent.putExtra("location", location);
             startActivity(intent);
         }
     }
