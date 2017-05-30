@@ -35,6 +35,7 @@ public class WeatherActivity extends AppCompatActivity{
         ButterKnife.bind(this);
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
+        mLocationTextView.setText("Weather at     ->" + location);
 
         getWeather(location);
     }

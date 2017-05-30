@@ -19,9 +19,7 @@ public class WeatherService {
                 .build();
 //        HttpUrl class to construct the URL we'll send our request to
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
-        urlBuilder.addQueryParameter(Constants.YOUR_QUERY_PARAMETER, location);
-        urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
-        String url = urlBuilder.build().toString();
+        String url = urlBuilder.build().toString() + location + Constants.API_KEY_QUERY_PARAMETER + Constants.API_KEY;
 
 //        create request using the created url
         okhttp3.Request request = new okhttp3.Request.Builder()
