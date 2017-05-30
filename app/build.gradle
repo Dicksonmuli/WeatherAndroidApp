@@ -30,4 +30,18 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    compile 'com.android.support:multidex:1.0.0'
+//    Okhttp to hundle http requests for APIs
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+//    an extension for signing the OAuth requests that OkHttp will send and receive
+    compile 'se.akerfeldt:okhttp-signpost:1.1.0'
+//    recycler view dependancy
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+//    picasso image organizer
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+
 }
