@@ -7,3 +7,7 @@
 /build
 /captures
 .externalNativeBuild
+libs/
+src/main/java/com/dicksonmully6gmail/weatherapp/Constants.java
+src/main/java/com/dicksonmully6gmail/weatherapp/services/
+src/main/res/drawable/
