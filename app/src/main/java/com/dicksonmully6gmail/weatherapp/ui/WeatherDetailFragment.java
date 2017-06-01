@@ -1,6 +1,12 @@
 package com.dicksonmully6gmail.weatherapp.ui;
 
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.TextView;
+
 import com.dicksonmully6gmail.weatherapp.R;
+import com.dicksonmully6gmail.weatherapp.models.Weather;
 
 import butterknife.Bind;
 
@@ -15,7 +21,8 @@ private static final int MAX_HEIGHT = 300;
 @Bind(R.id.weatherNameTextView) TextView mNameTextView;//weather main type
 @Bind(R.id.descriptionTextView) TextView mDescriptionTextView;//description here
 @Bind(R.id.dateTextView) TextView mDateTextView;//date here
-@Bind(R.id.tempTextView) TextView mWebsiteLabel;
+@Bind(R.id.tempTextView)
+TextView mWebsiteLabel;
 
 
 //  restaurant object
@@ -23,11 +30,11 @@ private Weather mRestaurant;
 
 public static WeatherDetailFragment newInstance(Weather weather) {
         //wrapping weather with parcels for serialization
-        RestaurantDetailFragment restaurantDetailFragment = new RestaurantDetailFragment();
+    WeatherDetailFragment weatherDetailFragment = new WeatherDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("restaurant", Parcels.wrap(restaurant));
-        restaurantDetailFragment.setArguments(args);
-        return restaurantDetailFragment;
+        args.putParcelable("weather", Parcels.wrap(weather));
+    weatherDetailFragment.setArguments(args);
+        return weatherDetailFragment;
         }
 
 
@@ -35,13 +42,13 @@ public static WeatherDetailFragment newInstance(Weather weather) {
 public void onCreate(Bundle savedInstanceState) {
 //        unwrapping restaurant on onCreate
         super.onCreate(savedInstanceState);
-        mRestaurant = Parcels.unwrap(getArguments().getParcelable("restaurant"));
+        mRestaurant = Parcels.unwrap(getArguments().getParcelable("weather"));
         }
 
 //    restaurant object used to set our ImageView and TextViews in onCreateView on onCreate view
 @Override
 public View onCreateView(LayoutInflater inflater, ViewGroup container,
-        Bundle savedInstanceState) {
+                         Bundle savedInstanceState) {
         // Inflating the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_restaurant_detail, container, false);
         ButterKnife.bind(this, view);
