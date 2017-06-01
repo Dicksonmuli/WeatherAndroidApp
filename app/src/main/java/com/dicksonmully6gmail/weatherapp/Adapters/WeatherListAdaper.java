@@ -33,7 +33,7 @@ public class WeatherListAdaper extends RecyclerView.Adapter<WeatherListAdaper.We
 
     @Override
     public void onBindViewHolder(WeatherListAdaper.WeatherViewHolder holder, int position) {
-        holder.bindWeather(mWeathers.get(position));
+        holder.(mWeathers.get(position));
     }
 
     @Override
