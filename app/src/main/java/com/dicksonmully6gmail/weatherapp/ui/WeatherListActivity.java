@@ -5,10 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.TextView;
 
-import com.dicksonmully6gmail.weatherapp.Adapters.WeatherListAdaper;
+import com.dicksonmully6gmail.weatherapp.Adapters.WeatherListAdapter;
 import com.dicksonmully6gmail.weatherapp.R;
 import com.dicksonmully6gmail.weatherapp.models.Weather;
 import com.dicksonmully6gmail.weatherapp.services.WeatherService;
@@ -30,7 +29,7 @@ import okhttp3.Response;
 public class WeatherListActivity extends AppCompatActivity{
     @Bind(R.id.locationTextView) TextView mLocationTextView;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    private WeatherListAdaper mAdapter;
+    private WeatherListAdapter mAdapter;
     public ArrayList<Weather> mWeathers = new ArrayList<>();
     public static final String TAG  = WeatherListActivity.class.getSimpleName();
 
@@ -59,15 +58,15 @@ public class WeatherListActivity extends AppCompatActivity{
             public void onResponse(Call call, Response response) throws IOException {
               mWeathers = weatherService.processResults(response);
 
-               WeatherListAdaper.this.runOnUiThread(new Runnable() {
+               WeatherListAdapter.this.runOnUiThread(new Runnable() {
 
                    @Override
                    public void run() {
 
-                       mAdapter = new WeatherListAdaper(getApplicationContext(), mWeathers);
+                       mAdapter = new WeatherListAdapter(getApplicationContext(), mWeathers);
                        mRecyclerView.setAdapter(mAdapter);
                        RecyclerView.LayoutManager layoutManager =
-                               new LinearLayoutManager(WeatherListAdaper.this);
+                               new LinearLayoutManager(WeatherListAdapter.this);
                        mRecyclerView.setLayoutManager(layoutManager);
                        mRecyclerView.setHasFixedSize(true);
 
