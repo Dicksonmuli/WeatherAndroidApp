@@ -3,9 +3,12 @@ package com.dicksonmully6gmail.weatherapp.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.dicksonmully6gmail.weatherapp.Adapters.WeatherListAdaper;
 import com.dicksonmully6gmail.weatherapp.R;
 import com.dicksonmully6gmail.weatherapp.models.Weather;
 import com.dicksonmully6gmail.weatherapp.services.WeatherService;
@@ -54,12 +57,21 @@ public class WeatherListActivity extends AppCompatActivity{
 
            @Override
             public void onResponse(Call call, Response response) throws IOException {
-               try {
-                   String jsonData = response.body().string();
-                   Log.v(TAG, jsonData);
-               }catch (IOException e) {
-                   e.printStackTrace();
-               }
+              mWeathers = weatherService.processResults(response);
+
+               WeatherListAdaper.this.runOnUiThread(new Runnable() {
+
+                   @Override
+                   public void run() {
+
+                       mAdapter = new WeatherListAdaper(getApplicationContext(), mWeathers);
+                       mRecyclerView.setAdapter(mAdapter);
+                       RecyclerView.LayoutManager layoutManager =
+                               new LinearLayoutManager(WeatherListAdaper.this);
+                       mRecyclerView.setLayoutManager(layoutManager);
+                       mRecyclerView.setHasFixedSize(true);
+
+                   }
            }
         });
     }
