@@ -15,91 +15,54 @@ package com.dicksonmully6gmail.weatherapp.models;
  */
 
 @Parcel
-public class Restaurant {
+public class Weather {
     // fields must be public
-    String mName;
-    String mPhone;
-    String mWebsite;
-    double mRating;
-    String mImageUrl;
-    ArrayList<String> mAddress = new ArrayList<>();
-    double mLatitude;
-    double mLongitude;
-    ArrayList<String> mCategories = new ArrayList<>();
+    double mTime;
+    double mWindSpeed;
+    double mHumidity;
+    double mTemp;
+    String mMainType;
+    String mDescription;
+    String mIcon;
 
     //    empty constructor needed by the Parceler library
-    public Restaurant() {}
+    public Weather() {}
 
-    double time = weatherJSON.getDouble("dt_txt");
-    double temp = weatherJSON
-            .getJSONObject("main").getDouble("temp");
-    double humidity = weatherJSON
-            .getJSONObject("main").getDouble("humidity");
-    double windSpeed = weatherJSON
-            .getJSONObject("wind").getDouble("speed");
-    String mainType = weatherJSON
-            .getJSONObject("weather").getString("main");
-    String description = weatherJSON
-            .getJSONObject("weather").getString("description");
-    String icon = weatherJSON
-            .getJSONObject("weather").getString("icon");
-
-    public Restaurant(String name, String phone, String website,
-                      double rating, String imageUrl, double latitude, double longitude, ArrayList<String> address,
-                      ArrayList<String> categories) {
-        this.mName = name;
-        this.mPhone = phone;
-        this.mWebsite = website;
-        this.mRating = rating;
-        this.mImageUrl = imageUrl;
-        mImageUrl = getLargeImageUrl(imageUrl);
-        this.mAddress = address;
-        this.mLatitude = latitude;
-        this.mLongitude = longitude;
-        this.mCategories = categories;
+    public Weather(double time, double temp, double humidity,
+                      double windSpeed, String mainType, String description, String icon) {
+        this.mTime = time;
+        this.mWindSpeed = windSpeed;
+        this.mHumidity = humidity;
+        this.mTemp = temp;
+        this.mMainType = mainType;
+        this.mDescription = description;
+        this.mIcon = icon;
     }
 
-    public String getName() {
-        return mName;
+    public double getTime() {
+        return mTime;
     }
 
-    public String getPhone() {
-        return mPhone;
+    public double getWindSpeed() {
+        return mWindSpeed;
     }
 
-    public String getWebsite() {
-        return  mWebsite;
+    public double getHumidity() {
+        return  mHumidity;
     }
 
-    public double getRating() {
-        return mRating;
+    public double getTemp() {
+        return mTemp;
     }
 
-    public String getImageUrl(){
-        return mImageUrl;
+    public String getMainType(){
+        return mMainType;
     }
-
-    //refactoring image getter method to retrieve high quality image
-    public String getLargeImageUrl(String imageUrl) {
-        String largeImageUrl = imageUrl.substring(0, imageUrl.length() - 5).concat("o.jpg");
-        return largeImageUrl;
+    public String getIcon(){
+        return mIcon;
     }
-
-    public ArrayList<String> getAddress() {
-        return mAddress;
+    public String getDescription(){
+        return mDescription;
     }
-
-    public double getLatitude() {
-        return mLatitude;
-    }
-
-    public double getLongitude() {
-        return mLongitude;
-    }
-
-    public ArrayList<String> getCategories() {
-        return mCategories;
-    }
-
 }
 }

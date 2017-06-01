@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.WeatherActivity">
+        <activity android:name=".ui.WeatherListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.dicksonmully6gmail.weatherapp.ui.MainActivity"></meta-data>

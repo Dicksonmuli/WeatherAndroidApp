@@ -7,10 +7,11 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.dicksonmully6gmail.weatherapp.R;
+import com.dicksonmully6gmail.weatherapp.models.Weather;
 import com.dicksonmully6gmail.weatherapp.services.WeatherService;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 
 
 import butterknife.Bind;
@@ -23,9 +24,12 @@ import okhttp3.Response;
  * Created by dickson on 5/30/17.
  */
 
-public class WeatherActivity extends AppCompatActivity{
+public class WeatherListActivity extends AppCompatActivity{
     @Bind(R.id.locationTextView) TextView mLocationTextView;
-    public static final String TAG  = WeatherActivity.class.getSimpleName();
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private WeatherListAdaper mAdapter;
+    public ArrayList<Weather> mWeathers = new ArrayList<>();
+    public static final String TAG  = WeatherListActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class WeatherActivity extends AppCompatActivity{
         ButterKnife.bind(this);
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        mLocationTextView.setText("Weather at     ->" + location);
+        mLocationTextView.setText("Loading Weather At  :" + location);
 
         getWeather(location);
     }
