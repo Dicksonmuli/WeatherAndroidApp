@@ -51,10 +51,10 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
     }
     //WeatherViewHolder class inside WeatherListAdapter
     public class WeatherViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        @Bind(R.id.restaurantImageView) ImageView mWeatherImageView;//weather icon
-        @Bind(R.id.restaurantNameTextView) TextView mNameTextView;//weather main type
-        @Bind(R.id.categoryTextView) TextView mCategoryTextView;//description here
-        @Bind(R.id.ratingTextView) TextView mRatingTextView;//date here
+        @Bind(R.id.weatherImageView) ImageView mWeatherImageView;//weather icon
+        @Bind(R.id.weatherNameTextView) TextView mNameTextView;//weather main type
+        @Bind(R.id.descriptionTextView) TextView mDescriptionTextView;//description here
+        @Bind(R.id.dateTextView) TextView mDateTextView;//date here
 
         private Context mContext;
 
@@ -81,8 +81,8 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
                     .centerCrop()
                     .into(mWeatherImageView);
             mNameTextView.setText(weather.getMainType());
-            mCategoryTextView.setText(weather.getDescription());
-            mRatingTextView.setText("Date: " + weather.getTime() );
+            mDescriptionTextView.setText(weather.getDescription());
+            mDateTextView.setText("Date: " + weather.getTime() );
         }
 
 
