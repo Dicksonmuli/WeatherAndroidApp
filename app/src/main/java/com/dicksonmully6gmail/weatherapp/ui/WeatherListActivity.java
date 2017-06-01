@@ -72,8 +72,9 @@ public class WeatherListActivity extends AppCompatActivity{
                        mRecyclerView.setHasFixedSize(true);
 
                    }
-           }
+
+                });
+            }
         });
     }
 }
-
